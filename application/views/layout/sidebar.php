@@ -44,35 +44,35 @@
 
             <li class="sidebar-item  <?= ($title === "Data Peminjaman") ? 'active' : '' ?>">
               <a href="<?= base_url('peminjaman') ?>" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="fa fa-user-check"></i>
                 <span>Data Peminjaman</span>
               </a>
             </li>
 
             <li class="sidebar-item  <?= ($title === "Data Aset") ? 'active' : '' ?>">
               <a href="<?= base_url('aset') ?>" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="fa fa-window-restore"></i>
                 <span>Data Aset</span>
               </a>
             </li>
 
             <li class="sidebar-item  <?= ($title === "Laporan Bulanan") ? 'active' : '' ?>">
               <a href="<?= base_url('laporan') ?>" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="fa fa-print"></i>
                 <span>Laporan Bulanan</span>
               </a>
             </li>
 
             <li class="sidebar-item  <?= ($title === "Management User") ? 'active' : '' ?>">
               <a href="<?= base_url('management_user') ?>" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="fa fa-users"></i>
                 <span>Management User</span>
               </a>
             </li>
 
             <li class="sidebar-item">
               <a href="<?= base_url('login/logout') ?>" class='sidebar-link'>
-                <i class="bi bi-grid-1x2-fill"></i>
+                <i class="fa fa-sign-out-alt"></i>
                 <span>Logout</span>
               </a>
             </li>

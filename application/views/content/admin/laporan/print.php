@@ -43,7 +43,7 @@
           <tr>
             <?php
             $no = 1;
-            foreach ($rusak as $as) {
+            foreach ($aset as $as) {
             ?>
           <tr>
             <td><?= $no++; ?></td>

@@ -11,6 +11,22 @@ class M_pinjam extends CI_Model
 		$this->db->order_by('idpeminjaman', 'asc');
 		return $this->db->get()->result();
 	}
+	
+	public function getbulan($bln)
+	{
+		$this->db->select('*');
+		$this->db->from('peminjaman');
+		$this->db->join('aset', 'aset.idaset = peminjaman.idaset', 'left');
+		$this->db->like('tglpinjam', $bln);
+		return $this->db->get()->result();
+	}
+
+	public function get($id)
+	{
+		$this->db->from('peminjaman');
+		$this->db->where('idpeminjaman', $id);
+		return $this->db->get()->row();
+	}
 
 	public function get_detail($idpeminjaman)
 	{

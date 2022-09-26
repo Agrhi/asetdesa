@@ -15,7 +15,8 @@ class Aset extends CI_Controller
 	{
 		$data = [
 			'title' 		=> 'Data Aset Desa',
-			'aset' => $this->M_aset->get_all_data()
+			'aset' => $this->M_aset->get_all_data(),
+			'rusak' => $this->M_aset->getrusak()
 		];
 		$this->load->view('layout/header', $data);
 		$this->load->view('layout/sidebar', $data);
@@ -30,9 +31,33 @@ class Aset extends CI_Controller
 		$data = array(
 			'namaaset'	=> $this->input->post('namaaset'),
 			'stok'	=> $this->input->post('stok'),
+			'bagus'	=> $this->input->post('stok'),
+			'rusak'	=> '0',
 		);
 		$this->M_aset->insert($data);
 		$this->session->set_flashdata('pesan', 'Data Berhasil Di Tambahkan !!!');
+		redirect('aset');
+	}
+
+	public function addrusak()
+	{
+
+		$data = array(
+			'idaset'	=> $this->input->post('idaset'),
+			'rusak'	=> $this->input->post('rusak'),
+		);
+		// Mengambil Data barang yang di pinjam
+		$pinjam = $this->M_aset->get($data['idaset']);
+		$jmlbgs = $pinjam->bagus;
+		$jmlold = $pinjam->stok;
+		$jmlrsk = $pinjam->rusak;
+		$jmlnow = $data['rusak'];
+		$data['stok'] = $jmlold - $jmlnow;
+		$data['bagus'] = $jmlbgs - $jmlnow;
+		$data['rusak'] = $data['rusak'] + $jmlrsk;
+
+		$this->M_aset->updaterusak($data);
+		$this->session->set_flashdata('pesanrusak', 'Data Aset Rusak Berhasil Di Tambahkan !!!');
 		redirect('aset');
 	}
 
@@ -43,6 +68,12 @@ class Aset extends CI_Controller
 			'namaaset' => $this->input->post('namaaset'),
 			'stok' => $this->input->post('stok'),
 		);
+		$pinjam = $this->M_aset->get($data['idaset']);
+		$jmlbgs = $pinjam->bagus;
+		$jmlold = $pinjam->stok;
+
+		$jml = $data['stok'] - $jmlold;
+		$data['bagus'] = $jml + $jmlbgs;
 		$this->M_aset->update($data);
 		$this->session->set_flashdata('pesan', 'Data Berhasil Di Edit !!!');
 		redirect('aset');

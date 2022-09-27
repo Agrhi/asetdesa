@@ -207,16 +207,14 @@
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label>Nama Barang</label>
-                                    <select disabled="true" name="idaset" class="form-control" onkeypress='return harusHuruf(event)' oninvalid="this.setCustomValidity('Aset Wajib Diisi !!!')" oninput="setCustomValidity('')" required>
-                                        <?php foreach ($aset as $as) {
-                                            $selected = '';
-                                            if ($as->idaset == $as->namaaset) {
-                                                $selected = 'selected';
-                                            }
-                                        ?>
-                                            <option value="<?= $as->idaset ?>" <?= $selected ?>><?= $as->namaaset ?></option>
-                                        <?php } ?>
-                                    </select>
+                                    <input type="text" name="idaset" value="<?= $p->idaset ?>" class="form-control" hidden>
+                                    <?php foreach ($pinjam as $jam) {
+                                        if ($p->idaset  == $jam->idaset) {
+                                            $namabarang = $jam->namaaset;
+                                            # code...
+                                        }
+                                    } ?>
+                                    <input type="text" value="<?= $namabarang; ?>" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">

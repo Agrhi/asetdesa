@@ -15,7 +15,7 @@
                 </div>
                 <div class="p-2" id="divhide">
                     <select class="form-select form-select-lg" id="bulan" aria-label=".form-select-lg example">
-                        <option value="0" selected disabled>Open this select Moon</option>
+                        <option value="0" selected disabled>Pilih Bulan</option>
                         <option value="01">Januari</option>
                         <option value="02">Februari</option>
                         <option value="03">Maret</option>

@@ -97,7 +97,7 @@ class Laporan extends CI_Controller
 			$data =[
 				'title' => 'Data Aset Desa Yang Rusak',
 				'select' => $id,
-				'aset' => $this->M_aset->getrusak()			
+				'rusak' => $this->M_aset->getrusak()			
 			];
 		} else if ($id == 3) {
 			$data =[

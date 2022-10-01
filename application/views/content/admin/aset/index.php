@@ -1,8 +1,7 @@
+<!-- Basic Tables start -->
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            Stok Aset Desa
-        </div>
+        <div class="card-header">Stok Aset Desa</div>
         <div class="card-body">
             <div style="text-align: right;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaladdaset">Tambah Data</button>
@@ -17,42 +16,37 @@
                 echo '</div>';
             }
             ?>
-            <table class="table" id="aset">
+            <table class="table" id="asetr">
                 <thead>
                     <tr>
-                        <td>No</td>
-                        <td>Nama Barang</td>
-                        <td>Jumlah Stok</td>
-                        <td>Tersisa</td>
-                        <td>Action</td>
+                        <th>No</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah Stok</th>
+                        <th>Tersisa</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php
-                        $no = 1;
-                        foreach ($aset as $as) {
-                        ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $as->namaaset; ?></td>
-                        <td><?= $as->stok; ?></td>
-                        <td><?= $as->bagus; ?></td>
-                        <td>
-                            <button class="btn icon btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $as->idaset ?>"><svg class="svg-inline--fa fa-book fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
-                                    <path fill="currentColor" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"></path>
-                                </svg></i></button>
-                            <button class="btn icon btn-success" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $as->idaset ?>"><i class="bi bi-pencil"></i></button>
-                            <button class="btn icon btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete<?= $as->idaset ?>"><i class="fa fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tr>
+                    <?php $no = 1;
+                    foreach ($aset as $as) { ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $as->namaaset; ?></td>
+                            <td><?= $as->stok; ?></td>
+                            <td><?= $as->bagus; ?></td>
+                            <td>
+                                <button class="btn icon btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $as->idaset ?>"><svg class="svg-inline--fa fa-book fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                                        <path fill="currentColor" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"></path>
+                                    </svg></i></button>
+                                <button class="btn icon btn-success" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $as->idaset ?>"><i class="bi bi-pencil"></i></button>
+                                <button class="btn icon btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete<?= $as->idaset ?>"><i class="fa fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-
 </section>
 
 <section class="section">
@@ -158,11 +152,11 @@
                 <div class="modal-body">
                     <label>Nama Barang : </label>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="namaaset" id="namaaset" placeholder="Nama Barang" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                        <input type="text" class="form-control" name="namaaset" id="namaaset" placeholder="Nama Barang" oninvalid="this.setCustomValidity('Nama Barang Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                     </div>
                     <label>Stok : </label>
                     <div class="form-group">
-                        <input type="number" class="form-control" name="stok" id="stok" placeholder="Stok" oninvalid="this.setCustomValidity('Username Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                        <input type="number" class="form-control" name="stok" id="stok" placeholder="Stok" oninvalid="this.setCustomValidity('Stok Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -170,7 +164,7 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Close</span>
                     </button>
-                    <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                    <button type="submit" class="btn btn-primary ml-1">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Simpan</span>
                     </button>
@@ -196,11 +190,11 @@
                     <div class="modal-body">
                         <label>Nama Barang : </label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="namaaset" value="<?= $as->namaaset ?>" placeholder="Nama Barang" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                            <input type="text" class="form-control" name="namaaset" value="<?= $as->namaaset ?>" placeholder="Nama Barang" oninvalid="this.setCustomValidity('Nama Barang Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                         </div>
                         <label>Stok : </label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="stok" value="<?= $as->stok ?>" placeholder="Stok" oninvalid="this.setCustomValidity('Username Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                            <input type="text" class="form-control" name="stok" value="<?= $as->stok ?>" placeholder="Stok" oninvalid="this.setCustomValidity('Stok Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -208,7 +202,7 @@
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Close</span>
                         </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary ml-1">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Ubah</span>
                         </button>

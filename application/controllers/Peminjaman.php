@@ -78,6 +78,20 @@ class Peminjaman extends CI_Controller
 				$jml = $aset->bagus + $juml;
 			} else if ($pinjam->jml < $data['jml']) {
 				$juml = $data['jml'] - $pinjam->jml;
+				// Mengambil Data barang yang di pinjam
+				$pinjam = $this->M_aset->get($data['idaset']);
+				$jmlold = $pinjam->bagus;
+				$jmlnow = $data['jml'];
+				$jml = $jmlold - $jmlnow;
+				// Update Jumlah Stok Barang
+				// if ($jmlnow > $juml) {
+				// 	$this->session->set_flashdata('error', 'Jumlah Peminjaman Melebihi Stok yang Tersedia !!!');
+				// 	redirect('peminjaman');
+				// }
+				if ($juml > $jmlold) {
+					$this->session->set_flashdata('error', 'Jumlah Peminjaman Melebihi Stok yang Tersedia !!!');
+					redirect('peminjaman');
+				}
 				$jml = $aset->bagus - $juml;
 			}
 		}

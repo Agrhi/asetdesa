@@ -1,8 +1,6 @@
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            <?= $title; ?>
-        </div>
+        <div class="card-header"> <?= $title; ?></div>
         <div class="card-body">
             <div style="text-align: right;">
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modaladdpeminjam">Tambah Data</button>
@@ -23,55 +21,52 @@
                 echo '</div>';
             }
             ?>
-            <table class="table" id="user">
+            <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <td>No</td>
-                        <td>Nama Lengkap</td>
-                        <td>Nama Barang</td>
-                        <td>Jumlah</td>
-                        <td>Status</td>
-                        <td>Action</td>
+                        <th>No</th>
+                        <th>Nama Lengkap</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php
-                        $no = 1;
-                        foreach ($pinjam as $p) {
-                        ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $p->nama; ?></td>
-                        <td><?= $p->namaaset; ?></td>
-                        <td><?= $p->jml; ?></td>
-                        <td><?php if ($p->status == 1) {
-                                echo 'Pinjam';
-                            } else {
-                                echo 'Dikembalikan';
-                            } ?></td>
-                        <td>
-                            <?php if ($p->status == 1) { ?>
-                                <button class="btn icon btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $p->idpeminjaman ?>"><svg class="svg-inline--fa fa-book fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
-                                        <path fill="currentColor" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"></path>
-                                    </svg></i></button>
-                                <button class="btn icon btn-success" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $p->idpeminjaman ?>"><i class="bi bi-pencil"></i></button>
-                                <button class="btn icon btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete<?= $p->idpeminjaman ?>"><i class="fa fa-trash-alt"></i></button>
-                                <a href="<?= base_url('peminjaman/updatest/') . $p->idpeminjaman . '/' . $p->idaset . '/' . $p->jml ?>" class="btn icon btn-primary">Proses</a>
-                            <?php } else { ?>
-                                <svg class="svg-inline--fa fa-check-circle fa-w-16 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
-                                    <path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
-                                </svg>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tr>
+                    <?php $no = 1;
+                    foreach ($pinjam as $p) { ?>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $p->nama; ?></td>
+                            <td><?= $p->namaaset; ?></td>
+                            <td><?= $p->jml; ?></td>
+                            <td>
+                                <?php if ($p->status == 1) {
+                                    echo 'Pinjam';
+                                } else {
+                                    echo 'Dikembalikan';
+                                } ?>
+                            </td>
+                            <td>
+                                <?php if ($p->status == 1) { ?>
+                                    <button class="btn icon btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detail<?= $p->idpeminjaman ?>"><svg class="svg-inline--fa fa-book fa-w-14 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                                            <path fill="currentColor" d="M448 360V24c0-13.3-10.7-24-24-24H96C43 0 0 43 0 96v320c0 53 43 96 96 96h328c13.3 0 24-10.7 24-24v-16c0-7.5-3.5-14.3-8.9-18.7-4.2-15.4-4.2-59.3 0-74.7 5.4-4.3 8.9-11.1 8.9-18.6zM128 134c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm0 64c0-3.3 2.7-6 6-6h212c3.3 0 6 2.7 6 6v20c0 3.3-2.7 6-6 6H134c-3.3 0-6-2.7-6-6v-20zm253.4 250H96c-17.7 0-32-14.3-32-32 0-17.6 14.4-32 32-32h285.4c-1.9 17.1-1.9 46.9 0 64z"></path>
+                                        </svg></i></button>
+                                    <button class="btn icon btn-success" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $p->idpeminjaman ?>"><i class="bi bi-pencil"></i></button>
+                                    <button class="btn icon btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete<?= $p->idpeminjaman ?>"><i class="fa fa-trash-alt"></i></button>
+                                    <a href="<?= base_url('peminjaman/updatest/') . $p->idpeminjaman . '/' . $p->idaset . '/' . $p->jml ?>" class="btn icon btn-primary">Proses</a>
+                                <?php } else { ?>
+                                    <svg class="svg-inline--fa fa-check-circle fa-w-16 fa-fw select-all" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                                    </svg>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-
 </section>
 
 <!-- Modal Tambah Peminjam -->
@@ -96,19 +91,19 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label>NIK</label>
-                                <input type="number" name="nik" id="nik" class="form-control" placeholder="NIK" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                                <input type="number" name="nik" id="nik" class="form-control" placeholder="NIK" oninvalid="this.setCustomValidity('NIK Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                                <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" oninvalid="this.setCustomValidity('Alamat Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label>Dusun</label>
-                                <input type="text" name="dusun" id="dusun" class="form-control" placeholder="Dusun" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                                <input type="text" name="dusun" id="dusun" class="form-control" placeholder="Dusun" oninvalid="this.setCustomValidity('Dusun Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
@@ -131,13 +126,13 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label>Tanggal Pinjam</label>
-                                <input type="date" name="tglpinjam" id="tglpinjam" class="form-control" placeholder="Tanggal Pinjam" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                                <input type="date" name="tglpinjam" id="tglpinjam" class="form-control" placeholder="Tanggal Pinjam" oninvalid="this.setCustomValidity('Tanggal Pinjam Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label>Tenggal Kembali</label>
-                                <input type="date" name="tglkembali" id="tglkembali" class="form-control" placeholder="Tenggal Kembali" oninvalid="this.setCustomValidity('Nama Lengkap Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
+                                <input type="date" name="tglkembali" id="tglkembali" class="form-control" placeholder="Tenggal Kembali" oninvalid="this.setCustomValidity('Tanggal Kembali Wajib Di Isi !!!')" oninput="setCustomValidity('')" required>
                             </div>
                         </div>
                         <!-- <div class="col-md-6 col-12">
@@ -368,3 +363,9 @@
     </div>
 <?php } ?>
 <!-- End Modal -->
+
+<script>
+    $(document).ready(function() {
+        $('#user').DataTable();
+    });
+</script>
